@@ -1,10 +1,11 @@
-package cn.liu;
+package cn.liu.hui.peng.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
+import cn.liu.hui.peng.service.AsynService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
@@ -18,11 +19,18 @@ import java.util.Map;
 @RestController
 public class HelloSpringBoot {
 
+    private static final Logger logger = LoggerFactory.getLogger(HelloSpringBoot.class);
+
+    @Autowired
+    private AsynService asynService;
 
     @RequestMapping("helloBoot")
     public Map<String, Object> sayHello(@RequestParam(value="name", defaultValue="World")String name) {
+        logger.info("----------helloBoot start----------");
         Map<String, Object> map = new HashMap<>();
         map.put("name", name);
+        map.put("time", asynService.execute());
+        logger.info("----------helloBoot end----------");
         return map;
     }
 }
