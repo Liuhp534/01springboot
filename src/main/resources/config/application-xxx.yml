@@ -9,4 +9,8 @@ server:
   port: 8090
   tomcat:
     acceptCount: 1
+    max-connections: 1
+    max-threads: 1
+#关闭安全限制
+
 

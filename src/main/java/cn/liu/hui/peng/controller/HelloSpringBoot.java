@@ -1,5 +1,6 @@
 package cn.liu.hui.peng.controller;
 
+import cn.liu.hui.peng.exception.MyBusinessException;
 import cn.liu.hui.peng.service.AsynService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,6 +30,11 @@ public class HelloSpringBoot {
     @RequestMapping("helloBoot")
     public Map<String, Object> sayHello(@RequestParam(value="name", defaultValue="World")String name) {
         logger.info("----------helloBoot start----------" + name);
+        //int i = 1/0;
+        if (name.equals("exception"))
+        {
+            throw new MyBusinessException("自定义异常");
+        }
         Map<String, Object> map = new HashMap<>();
         map.put("name", name);
         map.put("count", ++count);
