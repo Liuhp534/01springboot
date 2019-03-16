@@ -24,13 +24,16 @@ public class HelloSpringBoot {
     @Autowired
     private AsynService asynService;
 
+    private int count = 0;
+
     @RequestMapping("helloBoot")
     public Map<String, Object> sayHello(@RequestParam(value="name", defaultValue="World")String name) {
-        logger.info("----------helloBoot start----------");
+        logger.info("----------helloBoot start----------" + name);
         Map<String, Object> map = new HashMap<>();
         map.put("name", name);
-        map.put("time", asynService.execute());
-        logger.info("----------helloBoot end----------");
+        map.put("count", ++count);
+        asynService.execute();
+        logger.info("----------helloBoot end----------" + name);
         return map;
     }
 }

@@ -19,14 +19,14 @@ public class AsynServiceImpl implements AsynService {
     private static final Logger logger = LoggerFactory.getLogger(AsynServiceImpl.class);
 
     @Override
-    @Async("asyncServiceExecutor")
+    //@Async("asyncServiceExecutor")
     public Date execute() {
         logger.info("start execute");
-        /*try{
-            Thread.sleep(1000);
+        try{
+            Thread.sleep(10000);
         }catch(Exception e){
             e.printStackTrace();
-        }*/
+        }
         logger.info("end execute");
         return new Date();
     }
