@@ -23,7 +23,7 @@ public class AsynServiceImpl implements AsynService {
     public Date execute() {
         logger.info("start execute");
         try{
-            Thread.sleep(10000);
+            Thread.sleep(10);
         }catch(Exception e){
             e.printStackTrace();
         }
